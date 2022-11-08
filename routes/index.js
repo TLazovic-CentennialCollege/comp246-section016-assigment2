@@ -42,7 +42,7 @@ router.post("/login", function (req, res, next) {
     if(err) {
       res.redirect("/login");
     }
-    else if(user.password === req.body.password) {
+    else if(user && (user.password === req.body.password)) {
       res.redirect("/buisnessContacts/");
     } else {
       res.redirect("/login");
