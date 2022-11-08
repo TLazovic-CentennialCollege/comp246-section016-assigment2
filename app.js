@@ -44,9 +44,11 @@ app.use(function (err, req, res, next) {
 });
 
 
-let dbUri = "mongodb://127.0.0.1/express_portfolio";
+let dbUriLocal = "mongodb://127.0.0.1/express_portfolio";
+let dbUri = process.env.MONGODB_URI || dbUriLocal;
+console.log("attempting to login to: " + dbUri + ".");
 
-mongoose.connect(process.env.MONGODB_URI || dbUri, {
+mongoose.connect(dbUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
