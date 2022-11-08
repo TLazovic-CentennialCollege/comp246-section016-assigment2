@@ -1,4 +1,5 @@
-// app.js, Tomislav Lazovic, 301229459, 10/02/2022
+// app.js, Tomislav Lazovic, 301229459, 11/07/2022
+//establish refs to libs
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
@@ -7,6 +8,21 @@ var logger = require("morgan");
 // import "mongoose" - required for DB Access
 let mongoose = require("mongoose");
 
+// connect to mongoDB
+let dbUriLocal = "mongodb://127.0.0.1/express_portfolio";
+let dbUri = process.env.MONGODB_URI || dbUriLocal;
+console.log("attempting to login to: " + dbUri + ".");
+
+mongoose.connect(dbUri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+let mongoDB = mongoose.connection;
+mongoDB.on("error", console.error.bind(console, "Connection Error:"));
+mongoDB.once("open", () => {
+  console.log("Database Connected!...");
+});
 
 var indexRouter = require("./routes/index");
 var buisnessContactsRouter = require("./routes/buisnessContacts");
@@ -41,22 +57,6 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render("error");
-});
-
-
-let dbUriLocal = "mongodb://127.0.0.1/express_portfolio";
-let dbUri = process.env.MONGODB_URI || dbUriLocal;
-console.log("attempting to login to: " + dbUri + ".");
-
-mongoose.connect(dbUri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-let mongoDB = mongoose.connection;
-mongoDB.on("error", console.error.bind(console, "Connection Error:"));
-mongoDB.once("open", () => {
-  console.log("Database Connected!...");
 });
 
 module.exports = app;
