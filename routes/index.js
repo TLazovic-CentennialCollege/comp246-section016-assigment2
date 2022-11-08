@@ -4,6 +4,12 @@ var router = express.Router();
 var users = require("../models/users")
 
 
+
+router.get("/test", function (req, res, next) {
+  res.send("test echo");
+});
+
+
 /* GET home page. */
 router.get("/", function (req, res, next) {
   res.render("home.ejs", { title: "Home" });
