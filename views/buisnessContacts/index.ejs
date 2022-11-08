@@ -1,0 +1,63 @@
+<!-- index.ejs, Tomislav Lazovic, 301229459, 10/02/2022 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- This is the tag for the header which includes nav bar -->
+    <%- include ../partials/header.ejs %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+          <h3>Buisness Contacts List Information</h3>
+    
+          <br />
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+              <thead>
+                <tr>
+                  <th class="text-center">Contact Name</th>
+                  <th class="text-center">Contact Phone</th>
+                  <th class="text-center">Email</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Template Row -->
+                <% for (let count = 0; count < buisnessContacts.length; count++) { %>
+                <tr>
+                  <td class="text-center"><%= buisnessContacts[count].name %></td>
+                  <td class="text-center"><%= buisnessContacts[count].number %></td>
+                  <td class="text-center"><%= buisnessContacts[count].email %></td>
+    
+                  <td class="text-center">
+
+                    <a href="/buisnessContacts/<%= buisnessContacts[count]._id %>" class="btn btn-warning btn-sm">
+                      <i class="fas fa-trash"></i> Update</a>
+                    <a href="/buisnessContacts/delete/<%= buisnessContacts[count]._id %>" class="btn btn-warning btn-sm">
+                      <i class="fas fa-trash"></i> Delete</a>
+                  </td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </main>
+    
+          <div class="col-md-offset-1 col-md-10 text-center">
+            <ul class="pagination pagination-lg pager" id="myPager"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+</html>

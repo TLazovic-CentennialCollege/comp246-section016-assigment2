@@ -1,0 +1,22 @@
+<!-- projects.ejs, Tomislav Lazovic, 301229459, 10/02/2022 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- This is the tag for the header which includes nav bar -->
+    <%- include partials/header.ejs %>
+    <h1><%= title %></h1>
+    <!-- Display projects -->
+    <%- include partials/projectsCard.ejs %>
+    <!-- <%- include partials/footer.ejs %> -->
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!-- update.ejs, Tomislav Lazovic, 301229459, 10/02/2022 -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Update</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- This is the tag for the header which includes nav bar -->
+    <%- include ../partials/header.ejs %>
+    <h1>Update</h1>
+    <!-- Form -->
+    <form action="/buisnessContacts/<%= buisnessContact._id %>" method="post">
+        <div class="row">
+          <div class="col">
+            <div class="input-group input-group-lg">
+              <span class="input-group-text">name</span>
+              <input
+              id="name"
+              name="name"
+                type="text"
+                class="form-control"
+                placeholder="Enter your name"
+                aria-label="name"
+                aria-describedby="name"
+                value="<%= buisnessContact.name %>"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col">
+              <div class="input-group input-group-lg">
+                <span class="input-group-text">phone number</span>
+                <input
+                id="number"
+                name="number"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your phone number"
+                  aria-label="number"
+                  aria-describedby="number"
+                  value="<%= buisnessContact.number %>"
+                />
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col">
+              <div class="input-group input-group-lg">
+                <span class="input-group-text">email</span>
+                <input
+                id="email"
+                name="email"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your email"
+                  aria-label="email"
+                  aria-describedby="email"
+                  value="<%= buisnessContact.email %>"
+                />
+              </div>
+            </div>
+          </div>
+        <br />
+        <div>
+            <button type="submit" class="btn btn-primary mb-3">Submit</button>
+        </div>
+          <!-- <a href="views/home.ejs" class="btn btn-primary">Login</a> -->
+        </div>
+      </form>
+  </body>
+</html>
